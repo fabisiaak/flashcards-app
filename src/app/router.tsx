@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import LoginPage from "../features/auth/LoginPage";
 import ProtectedRoute from "../features/auth/ProtectedRoute";
 import AppLayout from "./layout/AppLayout";
+import WordsPage from "@/features/words/pages/WordsPage";
+
 
 export const router = createBrowserRouter([
   // PUBLIC
@@ -17,7 +19,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       { index: true, element: <div>HOME – ROUTER DZIALA</div> },
-      { path: "words", element: <div>Words</div> },
+      { path: "words", element: <WordsPage /> },
       { path: "training", element: <div>Training</div> },
       { path: "stats", element: <div>Stats</div> },
     ],
