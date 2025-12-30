@@ -27,7 +27,7 @@ export function WordRow({ word }: { word: Word }) {
   };
 
   return (
-    <li className="rounded-2xl border p-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+    <li className="rounded-2xl border bg-white text-black p-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-2">
         {isEditing ? (
           <>
@@ -36,23 +36,29 @@ export function WordRow({ word }: { word: Word }) {
           </>
         ) : (
           <>
-            <div className="font-semibold">{word.en}</div>
-            <div className="opacity-80">{word.pl}</div>
+            <div className="font-semibold text-lg break-words">{word.en}</div>
+            <div className="text-gray-600 break-words">{word.pl}</div>
           </>
         )}
       </div>
 
       <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
-        <select
-          className="h-11 rounded-xl border px-3"
-          value={word.status}
-          onChange={(e) => onStatus(e.target.value as WordStatus)}
-          disabled={statusMut.isPending}
-        >
-          <option value="new">new</option>
-          <option value="learning">learning</option>
-          <option value="known">known</option>
-        </select>
+      <select
+  className="h-11 rounded-xl bg-black text-white border border-gray-700 px-3"
+  value={word.status}
+  onChange={(e) => onStatus(e.target.value as WordStatus)}
+>
+  <option value="new" className="bg-black text-white">
+    new
+  </option>
+  <option value="learning" className="bg-black text-white">
+    learning
+  </option>
+  <option value="known" className="bg-black text-white">
+    known
+  </option>
+</select>
+
 
         {isEditing ? (
           <div className="flex gap-2">
@@ -73,10 +79,10 @@ export function WordRow({ word }: { word: Word }) {
           </div>
         ) : (
           <div className="flex gap-2">
-            <button className="h-11 rounded-xl border px-4" onClick={() => setIsEditing(true)} type="button">
+            <button className="h-11 rounded-xl bg-black text-white px-4" onClick={() => setIsEditing(true)} type="button">
               Edytuj
             </button>
-            <button className="h-11 rounded-xl border px-4" onClick={onDelete} type="button" disabled={del.isPending}>
+            <button className="h-11 rounded-xl bg-black text-white px-4" onClick={onDelete} type="button" disabled={del.isPending}>
               Usun
             </button>
           </div>

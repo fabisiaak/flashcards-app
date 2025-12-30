@@ -30,7 +30,9 @@ export default function WordsPage() {
             onClick={() => setTab(t.key)}
             className={[
               "h-11 px-4 rounded-xl border whitespace-nowrap",
-              tab === t.key ? "bg-black text-white" : "bg-transparent",
+              tab === t.key
+                ? "bg-black text-white"
+                : "bg-white text-black border-gray-300",
             ].join(" ")}
             type="button"
           >

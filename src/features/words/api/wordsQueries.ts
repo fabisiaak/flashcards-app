@@ -31,7 +31,7 @@ export function useUpdateWord() {
 
   return useMutation({
     mutationFn: (input: WordUpdateInput) => updateWord(input),
-    onSuccess: (updated, vars) => {
+    onSuccess: (_data, vars) => {
       // odswiez obecny + potencjalnie poprzedni status (jesli zmieniony)
       qc.invalidateQueries({ queryKey: ["words"] });
       qc.invalidateQueries({ queryKey: ["words", vars.status] });
